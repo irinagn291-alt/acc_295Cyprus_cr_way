@@ -1,4 +1,4 @@
-<!-- gf-brief source=c86fc4085a99a759f0fa95a72f0ad38fe7b74ed4e6a3e7ea57257a46d57b781f written=2026-09-30T03:17:20+03:00 -->
+<!-- gf-brief source=d2d59f6caf349f0b7b1662ea512518ca5038fb30a4f335b3de2c81faff36dd12 written=2026-09-30T03:23:28+03:00 -->
 # CR Way
 ## What it is
 CR Way is a Philadelphia Museum of Art matching rail. You save paintings, then hang each waiting canvas under the nameplate that names it, by maker or by title.
