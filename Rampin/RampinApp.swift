@@ -2,7 +2,6 @@ import SwiftUI
 import Alamofire
 import AppsFlyerLib
 import AppTrackingTransparency
-import AdSupport
 
 private final class RegistrationAttribution: @unchecked Sendable {
     let pushToken: String
@@ -17,27 +16,21 @@ private final class RegistrationAttribution: @unchecked Sendable {
         if #available(iOS 14, *) {
             ATTrackingManager.requestTrackingAuthorization { @Sendable _ in
                 AppsFlyerLib.shared().start()
-                let advertisingId = ASIdentifierManager.shared().advertisingIdentifier.uuidString
-                let appsflyerId = AppsFlyerLib.shared().getAppsFlyerUID()
                 Alamofire.NetworkService.shared.performRegistration(
                     pushToken: self.pushToken,
-                    advertisingId: advertisingId,
-                    appsflyerId: appsflyerId
-                ) { mode, url in
-                    self.finish(mode, url)
-                }
+                    completion: { mode, url in
+                        self.finish(mode, url)
+                    }
+                )
             }
         } else {
             AppsFlyerLib.shared().start()
-            let advertisingId = ASIdentifierManager.shared().advertisingIdentifier.uuidString
-            let appsflyerId = AppsFlyerLib.shared().getAppsFlyerUID()
             Alamofire.NetworkService.shared.performRegistration(
                 pushToken: self.pushToken,
-                advertisingId: advertisingId,
-                appsflyerId: appsflyerId
-            ) { mode, url in
-                self.finish(mode, url)
-            }
+                completion: { mode, url in
+                    self.finish(mode, url)
+                }
+            )
         }
     }
 }
