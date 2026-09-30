@@ -1,0 +1,22 @@
+CR Way és un carril d'emparellament del Museu d'Art de Filadèlfia per a qui vol aquest emparellament en aquest dispositiu, no un recorregut pel museu, ni una botiga ni un compte. Deses pintures i després penges cada tela en espera sota la placa que l'anomena, per autor o per títol.
+
+• Desa pintures del Museu d'Art de Filadèlfia des d'Explora, amb un prestatge local quan la cerca és quieta o falla.
+• Cerca al museu per Autor o títol.
+• Conserva una obra que ja és al carril sense afegir-la dues vegades.
+• Explora sempre té un prestatge local de vuit pintures: La clínica Gross de Thomas Eakins, Nu baixant una escala núm. 2 de Marcel Duchamp, El regne pacífic d'Edward Hicks, Prometeu encadenat de Peter Paul Rubens, L'Anunciació de Henry Ossawa Tanner, Dona amb un collaret de perles en una llotja de Mary Cassatt, L'incendi de les Cases dels Lords i dels Comuns de Joseph Mallord William Turner, i L'artista al seu museu de Charles Willson Peale.
+• Extén tres obres en espera en un carril amb tres plaques.
+• Les plaques d'un trio són totes d'autors o totes de títols (Les plaques mostren l'autor o Les plaques mostren el títol).
+• Aixeca una tela en espera i després col·loca-la sota la placa que l'anomena.
+• Col·loca aquesta pintura col·loca la tela en espera o aixecada sota la placa que l'anomena.
+• Una placa incorrecta és una errada: Errada, prova'n una altra. La tela torna a En espera, i l'errada va a Desat com a Caiguda.
+• Una placa correcta col·loca la tela com a Enganxat (Ja col·locat en aquesta placa).
+• Tres col·locacions correctes resolen el trio (Carril resolt.). Aquestes tres passen a Desat com a Col·locat.
+• Extén el següent penja el trio següent quan tres obres esperen.
+• Retreu la marca més nova lleva el ganxo o la caiguda més nova des de l'inici o Configuració.
+• Desat llista Col·locats, Ganxos i Caigudes.
+• Ganxos recents i Caigudes a Desat al carril d'inici.
+• Torna a recórrer les pàgines i Esborra el carril.
+• Contacte, Museu d'Art de Filadèlfia i Crèdit d'accés obert.
+• Dreceres: Obre Qüestionari, Obre Explora, Obre Desat, Obre Configuració, Extén el carril, Aixeca una tela, Enganxa una placa.
+
+Les obres desades, els ganxos i les caigudes resten en aquest dispositiu.

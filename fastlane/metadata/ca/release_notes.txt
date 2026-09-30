@@ -1,0 +1,7 @@
+Aquesta és la versió 1.0, el primer llançament de CR Way.
+
+CR Way és un carril d'emparellament del Museu d'Art de Filadèlfia. Deses pintures des d'Explora i després penges cada tela en espera sota la placa que l'anomena, per autor o per títol.
+
+Aquest llançament inclou Explora amb cerca per Autor o títol, Desa, Conserva i un prestatge local de vuit pintures; un carril d'inici per estendre tres obres en espera i col·locar-les sota les plaques; Col·loca aquesta pintura, Ganxos recents, Caigudes a Desat i Retreu la marca més nova; seccions de Desat Col·locats, Ganxos i Caigudes; Configuració amb Museu d'Art de Filadèlfia, Crèdit d'accés obert, Contacte, Torna a recórrer les pàgines i Esborra el carril; tres pàgines d'introducció Col·loca cada tela, Aixeca, després enganxa, i Conserva el carril; i dreceres Obre Qüestionari, Obre Explora, Obre Desat, Obre Configuració, Extén el carril, Aixeca una tela i Enganxa una placa.
+
+Només en anglès. Orientació vertical i aparença clara. iPhone i iPad. iOS 17.0 com a mínim. Les obres desades, els ganxos i les caigudes resten en aquest dispositiu.

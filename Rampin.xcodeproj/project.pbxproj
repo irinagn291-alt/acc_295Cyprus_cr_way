@@ -1,0 +1,721 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		069A1FF5A9DD2382C6C3F0A2 /* RailInk.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4B7CADA7EA9C32072DAED1 /* RailInk.swift */; };
+		09242F08609DC8B9759FD9D2 /* APIConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = A021DC6F4CADC4E52538C083 /* APIConfig.swift */; };
+		0B198932F7D405CB3DAA89D5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88E7A0FC3DBE928DBD17601 /* AppDelegate.swift */; };
+		0BDA458C2E7A53EF5DB27C49 /* CatalogClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C13C3E4F17872800C1A9463 /* CatalogClientTests.swift */; };
+		1188327C77206DF74BCB36B8 /* RailJob.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169DC7EECB312DE2EA91D206 /* RailJob.swift */; };
+		1223352D3274CB3B28AA38DA /* SavedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D609B5DF269555DC36BE174D /* SavedView.swift */; };
+		12631993E44B4F813F7A99A4 /* BarePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E81177E045B9D6AEE43930 /* BarePage.swift */; };
+		14564AF926F4DE91DAD1984F /* CatalogClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7803E934252898B39C8597C5 /* CatalogClient.swift */; };
+		18B3B280A0A069E7465E3620 /* PmaShelf.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD2F232B85F93BFFA310F960 /* PmaShelf.swift */; };
+		1918EFFBCB5214F8D75DC7EF /* AppsFlyerLib-Static in Frameworks */ = {isa = PBXBuildFile; productRef = 66B1858A6EAC8392DFD3C474 /* AppsFlyerLib-Static */; };
+		194109ADB1F9AC71C8BBE1F8 /* DropMark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AAFEB2A9C3C87107456DC4F /* DropMark.swift */; };
+		1D5B63695EA6BF57FB6F001F /* RailFigures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763ADD03C6C4D420B246FA8E /* RailFigures.swift */; };
+		1E78CCAD103CB4DAB897195B /* QuizView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FF755DCD9E84C1A5073162 /* QuizView.swift */; };
+		3102666F2497F7E398ACF628 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = C5F7C94185C6232297076A2C /* Alamofire */; };
+		31E6BD3B0452FECAB1D0C29C /* RailStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8503E4BAB414BDD498D6CF08 /* RailStoreTests.swift */; };
+		333C96AFE1BEDF44B73E29EF /* Rail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6955A4425AC408CDB1810863 /* Rail.swift */; };
+		36B21A53E91039FB659C5279 /* RampinApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE658E680E4920FE75C6AAF1 /* RampinApp.swift */; };
+		3E6522893FF3FF585D0444CE /* Work.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6076D15C441C84C9A477B2E7 /* Work.swift */; };
+		40B1C7948AD80D2254E59BC6 /* CanvasFace.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FBF283962976AE5F5E5256 /* CanvasFace.swift */; };
+		4BA7EFD0872C6B87740D5E3F /* RailIntents.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8EB935F6C9B7FBCD94C0711 /* RailIntents.swift */; };
+		4CC9733AB9F544C53DEDFA12 /* Daykey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CED6F5293D3581A735840CF /* Daykey.swift */; };
+		4F887E79ED7E9A6E48ADA68E /* Rampin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E3408AD9F9E98CFD7656B82 /* Rampin.swift */; };
+		5A2A05636C5A800CA1E27272 /* RailStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AB9BE4A90F5446715D3D00B /* RailStore.swift */; };
+		63C4D41BE02AFAEBCCFCAD1B /* RailCoverPane.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70D128F43C56BB3A2362A7B /* RailCoverPane.swift */; };
+		67871170650A57B53FA0CB65 /* RailJobTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B3A187B358313F01BA888C /* RailJobTests.swift */; };
+		6D9B542EE878ACFF90573763 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AF7FBF549469579F28E68C /* SettingsView.swift */; };
+		7093B41EE816DF63AC0FFE93 /* RailSeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91A954EED939F5C90AAEC3F /* RailSeed.swift */; };
+		774A2D2DEF2C9660D044DC88 /* RailArt.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC38CA3A8E387B0BA8F1F4FC /* RailArt.swift */; };
+		7A35F54E1678C6E58B00A6A5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC921F8A92D4F8B3867D09 /* ContentView.swift */; };
+		8623D48A6C1D64709A8F5BB6 /* Cartel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8573600EF1E360BCF167EBB0 /* Cartel.swift */; };
+		97681B9E748B83AEE6A60B27 /* RailChrome.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA77992DF3E137C608E72C0 /* RailChrome.swift */; };
+		99F0171F8B37D4A42A0B56F9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A77CE581AD3C60D1CA0F1243 /* Assets.xcassets */; };
+		9D0F678E47C01E7ACDF1B273 /* RailVault.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B86852840D3FD474633F33 /* RailVault.swift */; };
+		A7E9B76436B3C827081D79F6 /* OnboardingCover.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C135DC9B374692575A350B /* OnboardingCover.swift */; };
+		BBC4624118728AE5761720B9 /* RailLinks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848B548D2DA5B2B031575759 /* RailLinks.swift */; };
+		BC78AFC728CFAE3D55907920 /* RampinTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5486BEADA25AC02C2EE21DB /* RampinTests.swift */; };
+		BEA4362CDBF8CF361D79A92C /* RailCopy.swift in Sources */ = {isa = PBXBuildFile; fileRef = D153F1C8DDE6CF3D61A7429D /* RailCopy.swift */; };
+		BF7AAE8459E820EEEED496EB /* FamilyInvariantTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2633713F934430657127044E /* FamilyInvariantTests.swift */; };
+		C25038940769CA42EDEAF6EE /* RailKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3DC307A33E4D0D1E1CE16FB /* RailKey.swift */; };
+		C88E9447C9507F9DA10C9510 /* ExploreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF87EB2B7A8533AFEDEDB44 /* ExploreView.swift */; };
+		CE9EB801F8F2A43CDE3A1CE0 /* RailPress.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1664E91CCA85E61AC88621A /* RailPress.swift */; };
+		D0A6D6C0CC03FF18BF31EE67 /* HookMark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F09459A414A1C18A3154A26 /* HookMark.swift */; };
+		D50547A0B474FA24F03B303F /* HeroCanvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C6A966C909168B99CEA60F /* HeroCanvas.swift */; };
+		E42CB2759758C3CD890BFE83 /* RailLinksTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9605DA62245BDF7F8683AF8E /* RailLinksTests.swift */; };
+		E9DD0B134784B599BA567BD6 /* RailDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6880AC22B68286144C9984D /* RailDocument.swift */; };
+		EAE864D2A450E168C1153B5E /* RailFoldTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DD1B39DD38E471EE147BF91 /* RailFoldTests.swift */; };
+		EE341A6ED9EBB2057AFA7652 /* TwistSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1A535B28D97E38518E23C4 /* TwistSheet.swift */; };
+		FB58F51AB0DDF92E5114C65D /* RailMotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 072E7F01E8CCC57F5D4DC2A0 /* RailMotion.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		11B49AD0654E02E890C38E59 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 67FFD74FBDDD955AB963807E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BA65C8CFE5C6887BF956BA17;
+			remoteInfo = Rampin;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		06E81177E045B9D6AEE43930 /* BarePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarePage.swift; sourceTree = "<group>"; };
+		072E7F01E8CCC57F5D4DC2A0 /* RailMotion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RailMotion.swift; sourceTree = "<group>"; };
+		0CED6F5293D3581A735840CF /* Daykey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Daykey.swift; sourceTree = "<group>"; };
+		169DC7EECB312DE2EA91D206 /* RailJob.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RailJob.swift; sourceTree = "<group>"; };
+		1AAFEB2A9C3C87107456DC4F /* DropMark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropMark.swift; sourceTree = "<group>"; };
+		20C6A966C909168B99CEA60F /* HeroCanvas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroCanvas.swift; sourceTree = "<group>"; };
+		2633713F934430657127044E /* FamilyInvariantTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyInvariantTests.swift; sourceTree = "<group>"; };
+		2C13C3E4F17872800C1A9463 /* CatalogClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogClientTests.swift; sourceTree = "<group>"; };
+		3B1A535B28D97E38518E23C4 /* TwistSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwistSheet.swift; sourceTree = "<group>"; };
+		6076D15C441C84C9A477B2E7 /* Work.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Work.swift; sourceTree = "<group>"; };
+		60AC921F8A92D4F8B3867D09 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		6730CC8AB9507E8158B419C5 /* Rampin.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = Rampin.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6955A4425AC408CDB1810863 /* Rail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rail.swift; sourceTree = "<group>"; };
+		6AB9BE4A90F5446715D3D00B /* RailStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RailStore.swift; sourceTree = "<group>"; };
+		71AF7FBF549469579F28E68C /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		763ADD03C6C4D420B246FA8E /* RailFigures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RailFigures.swift; sourceTree = "<group>"; };
+		7803E934252898B39C8597C5 /* CatalogClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogClient.swift; sourceTree = "<group>"; };
+		7DD1B39DD38E471EE147BF91 /* RailFoldTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RailFoldTests.swift; sourceTree = "<group>"; };
+		80B3A187B358313F01BA888C /* RailJobTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RailJobTests.swift; sourceTree = "<group>"; };
+		839E6900343E6263BDC9C83B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		848B548D2DA5B2B031575759 /* RailLinks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RailLinks.swift; sourceTree = "<group>"; };
+		8503E4BAB414BDD498D6CF08 /* RailStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RailStoreTests.swift; sourceTree = "<group>"; };
+		8573600EF1E360BCF167EBB0 /* Cartel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cartel.swift; sourceTree = "<group>"; };
+		8770BED9F4523107A918CF30 /* RampinTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = RampinTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		9605DA62245BDF7F8683AF8E /* RailLinksTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RailLinksTests.swift; sourceTree = "<group>"; };
+		97FF755DCD9E84C1A5073162 /* QuizView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizView.swift; sourceTree = "<group>"; };
+		9E3408AD9F9E98CFD7656B82 /* Rampin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rampin.swift; sourceTree = "<group>"; };
+		9F09459A414A1C18A3154A26 /* HookMark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HookMark.swift; sourceTree = "<group>"; };
+		A021DC6F4CADC4E52538C083 /* APIConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConfig.swift; sourceTree = "<group>"; };
+		A4B86852840D3FD474633F33 /* RailVault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RailVault.swift; sourceTree = "<group>"; };
+		A70D128F43C56BB3A2362A7B /* RailCoverPane.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RailCoverPane.swift; sourceTree = "<group>"; };
+		A77CE581AD3C60D1CA0F1243 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B3DC307A33E4D0D1E1CE16FB /* RailKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RailKey.swift; sourceTree = "<group>"; };
+		BAA77992DF3E137C608E72C0 /* RailChrome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RailChrome.swift; sourceTree = "<group>"; };
+		C6880AC22B68286144C9984D /* RailDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RailDocument.swift; sourceTree = "<group>"; };
+		C6FBF283962976AE5F5E5256 /* CanvasFace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasFace.swift; sourceTree = "<group>"; };
+		C91A954EED939F5C90AAEC3F /* RailSeed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RailSeed.swift; sourceTree = "<group>"; };
+		CD2F232B85F93BFFA310F960 /* PmaShelf.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PmaShelf.swift; sourceTree = "<group>"; };
+		D153F1C8DDE6CF3D61A7429D /* RailCopy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RailCopy.swift; sourceTree = "<group>"; };
+		D3C135DC9B374692575A350B /* OnboardingCover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCover.swift; sourceTree = "<group>"; };
+		D5486BEADA25AC02C2EE21DB /* RampinTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RampinTests.swift; sourceTree = "<group>"; };
+		D609B5DF269555DC36BE174D /* SavedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedView.swift; sourceTree = "<group>"; };
+		DB4B7CADA7EA9C32072DAED1 /* RailInk.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RailInk.swift; sourceTree = "<group>"; };
+		DC38CA3A8E387B0BA8F1F4FC /* RailArt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RailArt.swift; sourceTree = "<group>"; };
+		E1664E91CCA85E61AC88621A /* RailPress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RailPress.swift; sourceTree = "<group>"; };
+		ECF87EB2B7A8533AFEDEDB44 /* ExploreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreView.swift; sourceTree = "<group>"; };
+		F88E7A0FC3DBE928DBD17601 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		F8EB935F6C9B7FBCD94C0711 /* RailIntents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RailIntents.swift; sourceTree = "<group>"; };
+		FE658E680E4920FE75C6AAF1 /* RampinApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RampinApp.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		767B58ED5184583F76EC6295 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3102666F2497F7E398ACF628 /* Alamofire in Frameworks */,
+				1918EFFBCB5214F8D75DC7EF /* AppsFlyerLib-Static in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		085A7C0AFF84F725C57EFF52 /* Work */ = {
+			isa = PBXGroup;
+			children = (
+				C6FBF283962976AE5F5E5256 /* CanvasFace.swift */,
+				7803E934252898B39C8597C5 /* CatalogClient.swift */,
+				ECF87EB2B7A8533AFEDEDB44 /* ExploreView.swift */,
+				CD2F232B85F93BFFA310F960 /* PmaShelf.swift */,
+				D609B5DF269555DC36BE174D /* SavedView.swift */,
+				6076D15C441C84C9A477B2E7 /* Work.swift */,
+			);
+			path = Work;
+			sourceTree = "<group>";
+		};
+		4403180D2FD723A5675FE8C3 /* Rail */ = {
+			isa = PBXGroup;
+			children = (
+				06E81177E045B9D6AEE43930 /* BarePage.swift */,
+				0CED6F5293D3581A735840CF /* Daykey.swift */,
+				20C6A966C909168B99CEA60F /* HeroCanvas.swift */,
+				D3C135DC9B374692575A350B /* OnboardingCover.swift */,
+				97FF755DCD9E84C1A5073162 /* QuizView.swift */,
+				6955A4425AC408CDB1810863 /* Rail.swift */,
+				DC38CA3A8E387B0BA8F1F4FC /* RailArt.swift */,
+				BAA77992DF3E137C608E72C0 /* RailChrome.swift */,
+				D153F1C8DDE6CF3D61A7429D /* RailCopy.swift */,
+				A70D128F43C56BB3A2362A7B /* RailCoverPane.swift */,
+				C6880AC22B68286144C9984D /* RailDocument.swift */,
+				763ADD03C6C4D420B246FA8E /* RailFigures.swift */,
+				DB4B7CADA7EA9C32072DAED1 /* RailInk.swift */,
+				F8EB935F6C9B7FBCD94C0711 /* RailIntents.swift */,
+				169DC7EECB312DE2EA91D206 /* RailJob.swift */,
+				B3DC307A33E4D0D1E1CE16FB /* RailKey.swift */,
+				848B548D2DA5B2B031575759 /* RailLinks.swift */,
+				072E7F01E8CCC57F5D4DC2A0 /* RailMotion.swift */,
+				E1664E91CCA85E61AC88621A /* RailPress.swift */,
+				C91A954EED939F5C90AAEC3F /* RailSeed.swift */,
+				6AB9BE4A90F5446715D3D00B /* RailStore.swift */,
+				A4B86852840D3FD474633F33 /* RailVault.swift */,
+				71AF7FBF549469579F28E68C /* SettingsView.swift */,
+				3B1A535B28D97E38518E23C4 /* TwistSheet.swift */,
+			);
+			path = Rail;
+			sourceTree = "<group>";
+		};
+		482A3B7F35C455131BC3E56B = {
+			isa = PBXGroup;
+			children = (
+				E14D75294E440B6C3976C4F1 /* Rampin */,
+				84F0311E7433A8E5CDE5714F /* RampinTests */,
+				9061E74AAB924D8419E15E5E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		5A39B9D3D853D7F6C97805A9 /* Rampin */ = {
+			isa = PBXGroup;
+			children = (
+				9E3408AD9F9E98CFD7656B82 /* Rampin.swift */,
+			);
+			path = Rampin;
+			sourceTree = "<group>";
+		};
+		721EC88F68D4FB008B9C1798 /* HookMark */ = {
+			isa = PBXGroup;
+			children = (
+				9F09459A414A1C18A3154A26 /* HookMark.swift */,
+			);
+			path = HookMark;
+			sourceTree = "<group>";
+		};
+		84F0311E7433A8E5CDE5714F /* RampinTests */ = {
+			isa = PBXGroup;
+			children = (
+				2C13C3E4F17872800C1A9463 /* CatalogClientTests.swift */,
+				2633713F934430657127044E /* FamilyInvariantTests.swift */,
+				7DD1B39DD38E471EE147BF91 /* RailFoldTests.swift */,
+				80B3A187B358313F01BA888C /* RailJobTests.swift */,
+				9605DA62245BDF7F8683AF8E /* RailLinksTests.swift */,
+				8503E4BAB414BDD498D6CF08 /* RailStoreTests.swift */,
+				D5486BEADA25AC02C2EE21DB /* RampinTests.swift */,
+			);
+			path = RampinTests;
+			sourceTree = "<group>";
+		};
+		9061E74AAB924D8419E15E5E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6730CC8AB9507E8158B419C5 /* Rampin.app */,
+				8770BED9F4523107A918CF30 /* RampinTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CDD91A26E08679CDB762646E /* Cartel */ = {
+			isa = PBXGroup;
+			children = (
+				8573600EF1E360BCF167EBB0 /* Cartel.swift */,
+			);
+			path = Cartel;
+			sourceTree = "<group>";
+		};
+		DCA8D47B2E71A4DE5ABC4A6F /* DropMark */ = {
+			isa = PBXGroup;
+			children = (
+				1AAFEB2A9C3C87107456DC4F /* DropMark.swift */,
+			);
+			path = DropMark;
+			sourceTree = "<group>";
+		};
+		E14D75294E440B6C3976C4F1 /* Rampin */ = {
+			isa = PBXGroup;
+			children = (
+				A021DC6F4CADC4E52538C083 /* APIConfig.swift */,
+				F88E7A0FC3DBE928DBD17601 /* AppDelegate.swift */,
+				A77CE581AD3C60D1CA0F1243 /* Assets.xcassets */,
+				60AC921F8A92D4F8B3867D09 /* ContentView.swift */,
+				839E6900343E6263BDC9C83B /* Info.plist */,
+				FE658E680E4920FE75C6AAF1 /* RampinApp.swift */,
+				CDD91A26E08679CDB762646E /* Cartel */,
+				DCA8D47B2E71A4DE5ABC4A6F /* DropMark */,
+				721EC88F68D4FB008B9C1798 /* HookMark */,
+				4403180D2FD723A5675FE8C3 /* Rail */,
+				5A39B9D3D853D7F6C97805A9 /* Rampin */,
+				085A7C0AFF84F725C57EFF52 /* Work */,
+			);
+			path = Rampin;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		BA65C8CFE5C6887BF956BA17 /* Rampin */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 06A443318ED11036A8BA1823 /* Build configuration list for PBXNativeTarget "Rampin" */;
+			buildPhases = (
+				0AA41C682953836F4D6A5D14 /* Sources */,
+				A2E3F4232B3B002E1C4F5789 /* Resources */,
+				767B58ED5184583F76EC6295 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Rampin;
+			packageProductDependencies = (
+				C5F7C94185C6232297076A2C /* Alamofire */,
+				66B1858A6EAC8392DFD3C474 /* AppsFlyerLib-Static */,
+			);
+			productName = Rampin;
+			productReference = 6730CC8AB9507E8158B419C5 /* Rampin.app */;
+			productType = "com.apple.product-type.application";
+		};
+		DA153CC8AEAB0DAD78A6A69E /* RampinTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 80055C4C5A16D188D3EDAC67 /* Build configuration list for PBXNativeTarget "RampinTests" */;
+			buildPhases = (
+				C1BA9E2851CEDE97B4B2872C /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D95ABAE4C534A95D98AA8E94 /* PBXTargetDependency */,
+			);
+			name = RampinTests;
+			packageProductDependencies = (
+			);
+			productName = RampinTests;
+			productReference = 8770BED9F4523107A918CF30 /* RampinTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		67FFD74FBDDD955AB963807E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					BA65C8CFE5C6887BF956BA17 = {
+						ProvisioningStyle = Automatic;
+					};
+					DA153CC8AEAB0DAD78A6A69E = {
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = A1335ECFA277C7D5EFEF0A4C /* Build configuration list for PBXProject "Rampin" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = 482A3B7F35C455131BC3E56B;
+			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				1C75B6935C7725E7A9DF9812 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				0D027EFB748AA2E137C36752 /* XCRemoteSwiftPackageReference "AppsFlyerFramework-Static" */,
+			);
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 9061E74AAB924D8419E15E5E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BA65C8CFE5C6887BF956BA17 /* Rampin */,
+				DA153CC8AEAB0DAD78A6A69E /* RampinTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A2E3F4232B3B002E1C4F5789 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				99F0171F8B37D4A42A0B56F9 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		0AA41C682953836F4D6A5D14 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				09242F08609DC8B9759FD9D2 /* APIConfig.swift in Sources */,
+				0B198932F7D405CB3DAA89D5 /* AppDelegate.swift in Sources */,
+				12631993E44B4F813F7A99A4 /* BarePage.swift in Sources */,
+				40B1C7948AD80D2254E59BC6 /* CanvasFace.swift in Sources */,
+				8623D48A6C1D64709A8F5BB6 /* Cartel.swift in Sources */,
+				14564AF926F4DE91DAD1984F /* CatalogClient.swift in Sources */,
+				7A35F54E1678C6E58B00A6A5 /* ContentView.swift in Sources */,
+				4CC9733AB9F544C53DEDFA12 /* Daykey.swift in Sources */,
+				194109ADB1F9AC71C8BBE1F8 /* DropMark.swift in Sources */,
+				C88E9447C9507F9DA10C9510 /* ExploreView.swift in Sources */,
+				D50547A0B474FA24F03B303F /* HeroCanvas.swift in Sources */,
+				D0A6D6C0CC03FF18BF31EE67 /* HookMark.swift in Sources */,
+				A7E9B76436B3C827081D79F6 /* OnboardingCover.swift in Sources */,
+				18B3B280A0A069E7465E3620 /* PmaShelf.swift in Sources */,
+				1E78CCAD103CB4DAB897195B /* QuizView.swift in Sources */,
+				333C96AFE1BEDF44B73E29EF /* Rail.swift in Sources */,
+				774A2D2DEF2C9660D044DC88 /* RailArt.swift in Sources */,
+				97681B9E748B83AEE6A60B27 /* RailChrome.swift in Sources */,
+				BEA4362CDBF8CF361D79A92C /* RailCopy.swift in Sources */,
+				63C4D41BE02AFAEBCCFCAD1B /* RailCoverPane.swift in Sources */,
+				E9DD0B134784B599BA567BD6 /* RailDocument.swift in Sources */,
+				1D5B63695EA6BF57FB6F001F /* RailFigures.swift in Sources */,
+				069A1FF5A9DD2382C6C3F0A2 /* RailInk.swift in Sources */,
+				4BA7EFD0872C6B87740D5E3F /* RailIntents.swift in Sources */,
+				1188327C77206DF74BCB36B8 /* RailJob.swift in Sources */,
+				C25038940769CA42EDEAF6EE /* RailKey.swift in Sources */,
+				BBC4624118728AE5761720B9 /* RailLinks.swift in Sources */,
+				FB58F51AB0DDF92E5114C65D /* RailMotion.swift in Sources */,
+				CE9EB801F8F2A43CDE3A1CE0 /* RailPress.swift in Sources */,
+				7093B41EE816DF63AC0FFE93 /* RailSeed.swift in Sources */,
+				5A2A05636C5A800CA1E27272 /* RailStore.swift in Sources */,
+				9D0F678E47C01E7ACDF1B273 /* RailVault.swift in Sources */,
+				4F887E79ED7E9A6E48ADA68E /* Rampin.swift in Sources */,
+				36B21A53E91039FB659C5279 /* RampinApp.swift in Sources */,
+				1223352D3274CB3B28AA38DA /* SavedView.swift in Sources */,
+				6D9B542EE878ACFF90573763 /* SettingsView.swift in Sources */,
+				EE341A6ED9EBB2057AFA7652 /* TwistSheet.swift in Sources */,
+				3E6522893FF3FF585D0444CE /* Work.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C1BA9E2851CEDE97B4B2872C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0BDA458C2E7A53EF5DB27C49 /* CatalogClientTests.swift in Sources */,
+				BF7AAE8459E820EEEED496EB /* FamilyInvariantTests.swift in Sources */,
+				EAE864D2A450E168C1153B5E /* RailFoldTests.swift in Sources */,
+				67871170650A57B53FA0CB65 /* RailJobTests.swift in Sources */,
+				E42CB2759758C3CD890BFE83 /* RailLinksTests.swift in Sources */,
+				31E6BD3B0452FECAB1D0C29C /* RailStoreTests.swift in Sources */,
+				BC78AFC728CFAE3D55907920 /* RampinTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D95ABAE4C534A95D98AA8E94 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BA65C8CFE5C6887BF956BA17 /* Rampin */;
+			targetProxy = 11B49AD0654E02E890C38E59 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		0F8457B903255726FB4905DB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.rampin.hook.tests;
+				SDKROOT = iphoneos;
+				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_VERSION = 6.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Rampin.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Rampin";
+			};
+			name = Debug;
+		};
+		7FD676FD83F70DD3FBB88C41 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_VERSION = 6.2;
+			};
+			name = Debug;
+		};
+		BAC30FAD6D4E100368D7695D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.rampin.hook.tests;
+				SDKROOT = iphoneos;
+				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_VERSION = 6.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Rampin.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Rampin";
+			};
+			name = Release;
+		};
+		C212F984FBD09B7CE4BB9549 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_VERSION = 6.2;
+			};
+			name = Release;
+		};
+		D4A717BFB80AEB5683AF088D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Rampin/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "CR Way";
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
+				INFOPLIST_KEY_NSCameraUsageDescription = "This app does not use the camera.";
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.rampin.hook;
+				PRODUCT_NAME = Rampin;
+				SDKROOT = iphoneos;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_STRICT_CONCURRENCY = complete;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		E2E05D5BCE6DCF8FFEC4E248 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Rampin/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "CR Way";
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
+				INFOPLIST_KEY_NSCameraUsageDescription = "This app does not use the camera.";
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.rampin.hook;
+				PRODUCT_NAME = Rampin;
+				SDKROOT = iphoneos;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_STRICT_CONCURRENCY = complete;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		06A443318ED11036A8BA1823 /* Build configuration list for PBXNativeTarget "Rampin" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E2E05D5BCE6DCF8FFEC4E248 /* Debug */,
+				D4A717BFB80AEB5683AF088D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		80055C4C5A16D188D3EDAC67 /* Build configuration list for PBXNativeTarget "RampinTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0F8457B903255726FB4905DB /* Debug */,
+				BAC30FAD6D4E100368D7695D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		A1335ECFA277C7D5EFEF0A4C /* Build configuration list for PBXProject "Rampin" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7FD676FD83F70DD3FBB88C41 /* Debug */,
+				C212F984FBD09B7CE4BB9549 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		0D027EFB748AA2E137C36752 /* XCRemoteSwiftPackageReference "AppsFlyerFramework-Static" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AppsFlyerSDK/AppsFlyerFramework-Static";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.17.9;
+			};
+		};
+		1C75B6935C7725E7A9DF9812 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/wrandecima-bit/Alamofire";
+			requirement = {
+				kind = revision;
+				revision = 7fdd403089757be2ce6991b287c7bef612c8bd04;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		66B1858A6EAC8392DFD3C474 /* AppsFlyerLib-Static */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0D027EFB748AA2E137C36752 /* XCRemoteSwiftPackageReference "AppsFlyerFramework-Static" */;
+			productName = "AppsFlyerLib-Static";
+		};
+		C5F7C94185C6232297076A2C /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1C75B6935C7725E7A9DF9812 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 67FFD74FBDDD955AB963807E /* Project object */;
+}

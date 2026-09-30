@@ -1,0 +1,1 @@
+Save a museum painting, then hook it under the nameplate that names it. Misses stay on Saved. Retract peels the newest mark.

@@ -1,0 +1,7 @@
+This is version 1.0, the first release of CR Way.
+
+CR Way is a Philadelphia Museum of Art matching rail. You save paintings from Explore, then hang each waiting canvas under the nameplate that names it, by maker or by title.
+
+This release includes Explore with Maker or title search, Save, Keep and a local shelf of eight paintings; a home rail to spread three waiting works and seat them under nameplates; Seat this painting, Recent hooks, Drops on Saved and Retract newest mark; Saved sections Seated, Hooks and Drops; Settings with Philadelphia Museum of Art, Open access credit, Contact, Walk the pages again and Erase the rail; three onboarding pages Seat each canvas, Lift, then hook and Keep the rail; and Shortcuts Open Quiz, Open Explore, Open Saved, Open Settings, Spread the rail, Lift a canvas and Hook a nameplate.
+
+English only. Portrait and light appearance. iPhone and iPad. Minimum iOS 17.0. Saved works, hooks and drops stay on this device.
