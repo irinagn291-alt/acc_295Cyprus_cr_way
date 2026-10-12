@@ -142,6 +142,58 @@ struct ResetRailStyle: ButtonStyle {
     }
 }
 
+/// Role: Rail. Maker or title choice before Spread. Selected wears accent. Min 44pt.
+struct FieldPickStyle: ButtonStyle {
+    var isSelected: Bool
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .font(RailType.font(.headline))
+            .foregroundStyle(isSelected ? RailInk.surface : RailInk.ink)
+            .lineLimit(1)
+            .frame(maxWidth: .infinity, minHeight: RailSpace.hit)
+            .padding(.horizontal, RailSpace.card)
+            .background(fill(pressed: configuration.isPressed), in: Capsule())
+            .contentShape(Capsule())
+            .scaleEffect(RailMotion.scale(pressed: configuration.isPressed, reduceMotion: reduceMotion))
+            .animation(RailMotion.press(reduceMotion), value: configuration.isPressed)
+    }
+
+    private func fill(pressed: Bool) -> Color {
+        if isSelected {
+            return pressed ? RailInk.accent.opacity(0.82) : RailInk.accent
+        }
+        return pressed ? RailInk.muted.opacity(0.18) : RailInk.surface
+    }
+}
+
+/// Role: Rail. Shelf cut and order chips. Selected wears accent. Min 44pt. Not a full-width pill.
+struct ChipPickStyle: ButtonStyle {
+    var isSelected: Bool
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .font(RailType.font(.caption))
+            .foregroundStyle(isSelected ? RailInk.surface : RailInk.ink)
+            .lineLimit(1)
+            .padding(.horizontal, RailSpace.card)
+            .frame(minHeight: RailSpace.hit)
+            .background(fill(pressed: configuration.isPressed), in: Capsule())
+            .contentShape(Capsule())
+            .scaleEffect(RailMotion.scale(pressed: configuration.isPressed, reduceMotion: reduceMotion))
+            .animation(RailMotion.press(reduceMotion), value: configuration.isPressed)
+    }
+
+    private func fill(pressed: Bool) -> Color {
+        if isSelected {
+            return pressed ? RailInk.accent.opacity(0.82) : RailInk.accent
+        }
+        return pressed ? RailInk.muted.opacity(0.18) : RailInk.surface
+    }
+}
+
 /// Role: Rail. Icon-only chrome. Min 44pt. VoiceOver labels live on the Button.
 struct RailIconStyle: ButtonStyle {
     @Environment(\.accessibilityReduceMotion) private var reduceMotion

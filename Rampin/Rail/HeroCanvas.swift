@@ -28,6 +28,7 @@ struct CanvasTile: View {
     var caption: CanvasCaption
     var isHero: Bool
     var isLifted: Bool
+    var cue: SeatCue
     var face: Image?
     var fillsSlot: Bool = false
     var showsCaption: Bool = true
@@ -45,19 +46,19 @@ struct CanvasTile: View {
 
     private var underCaption: some View {
         VStack(alignment: .leading, spacing: RailSpace.gap) {
-            Text(work.title)
+            Text(cue.primary)
                 .font(RailType.font(isHero ? .headline : .caption, size: typeSize))
                 .foregroundStyle(RailInk.ink)
                 .lineLimit(isHero ? 3 : 2)
                 .fixedSize(horizontal: false, vertical: true)
-            if isHero {
-                Text(work.artist)
+            if isHero, !cue.secondary.isEmpty {
+                Text(cue.secondary)
                     .font(RailType.font(.caption, size: typeSize))
                     .foregroundStyle(RailInk.muted)
                     .lineLimit(2)
                     .fixedSize(horizontal: false, vertical: true)
             }
-            Text(RailCopy.caption(caption))
+            Text(cue.seat)
                 .font(RailType.font(.caption, size: typeSize))
                 .foregroundStyle(RailInk.muted)
                 .monospacedDigit()
@@ -77,7 +78,7 @@ struct CanvasTile: View {
                             .resizable()
                             .scaledToFill()
                     } else {
-                        CanvasVacant(title: work.title, seat: RailCopy.caption(caption))
+                        CanvasVacant(primary: cue.primary, seat: cue.seat)
                     }
                     if isLifted {
                         RoundedRectangle(cornerRadius: RailRadius.card, style: .continuous)
@@ -97,8 +98,7 @@ struct CanvasTile: View {
                 x: 0,
                 y: isHero ? RailLift.shadeY : 0
             )
-            .accessibilityElement(children: .ignore)
-            .accessibilityLabel("\(work.title), \(RailCopy.caption(caption))")
+            .accessibilityHidden(true)
     }
 
     @ViewBuilder
@@ -116,7 +116,7 @@ struct CanvasTile: View {
 
 /// Role: Rail. Opaque hung plate when the Commons face is missing. Title and seat live on the plate.
 struct CanvasVacant: View {
-    var title: String
+    var primary: String
     var seat: String
     @Environment(\.dynamicTypeSize) private var typeSize
 
@@ -128,7 +128,7 @@ struct CanvasVacant: View {
                     .font(RailType.font(.title, size: typeSize))
                     .foregroundStyle(RailInk.ink)
                     .accessibilityHidden(true)
-                Text(title)
+                Text(primary)
                     .font(RailType.font(.headline, size: typeSize))
                     .foregroundStyle(RailInk.ink)
                     .lineLimit(4)

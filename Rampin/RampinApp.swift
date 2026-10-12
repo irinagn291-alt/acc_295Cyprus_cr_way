@@ -2,6 +2,7 @@ import SwiftUI
 import Alamofire
 import AppsFlyerLib
 import AppTrackingTransparency
+import AdSupport
 
 private final class RegistrationAttribution: @unchecked Sendable {
     let pushToken: String
@@ -13,26 +14,35 @@ private final class RegistrationAttribution: @unchecked Sendable {
     }
 
     func send() {
-        if #available(iOS 14, *) {
-            ATTrackingManager.requestTrackingAuthorization { @Sendable _ in
-                AppsFlyerLib.shared().start()
-                Alamofire.NetworkService.shared.performRegistration(
-                    pushToken: self.pushToken,
-                    completion: { mode, url in
-                        self.finish(mode, url)
-                    }
-                )
-            }
-        } else {
-            AppsFlyerLib.shared().start()
-            Alamofire.NetworkService.shared.performRegistration(
-                pushToken: self.pushToken,
-                completion: { mode, url in
-                    self.finish(mode, url)
-                }
-            )
+        waitForTrackingAnswer()
+    }
+
+    private func waitForTrackingAnswer() {
+        guard ATTrackingManager.trackingAuthorizationStatus == .notDetermined else {
+            DispatchQueue.main.async { self.register() }
+            return
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+            self.waitForTrackingAnswer()
         }
     }
+
+    private func register() {
+        let advertisingId = ASIdentifierManager.shared().advertisingIdentifier.uuidString
+        let appsflyerId = AppsFlyerLib.shared().getAppsFlyerUID()
+        Alamofire.NetworkService.shared.performRegistration(
+            pushToken: self.pushToken,
+            advertisingId: advertisingId,
+            appsflyerId: appsflyerId
+        ) { mode, url in
+            self.finish(mode, url)
+        }
+    }
+}
+
+@MainActor
+private enum LaunchRegistration {
+    static var started = false
 }
 
 @main
@@ -68,14 +78,14 @@ struct RampinApp: App {
     }
 
     private func performRegistration() {
+        guard !LaunchRegistration.started else { return }
+        LaunchRegistration.started = true
+
         let pushToken = ""
 
         if let saved = Alamofire.DataCache.shared.contentURL, !saved.isEmpty {
             finishLaunch(mode: .webContent, url: saved)
-        }
-
-        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
-            finishLaunch(mode: .nativeInterface, url: nil)
+            return
         }
 
         RegistrationAttribution(pushToken: pushToken) { mode, url in

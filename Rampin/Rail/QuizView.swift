@@ -10,7 +10,9 @@ struct QuizView: View {
 
     var body: some View {
         Group {
-            if chrome.quizIsEmpty {
+            if chrome.quizIsEmpty && chrome.rail.readyToSpread {
+                readyBoard
+            } else if chrome.quizIsEmpty {
                 bareBoard
             } else if chrome.rail.fold == .settled {
                 settledBoard
@@ -46,7 +48,7 @@ struct QuizView: View {
             BarePage(
                 art: RailArt.emptyHome,
                 headline: chrome.recoveredNotice ? RailCopy.recoverHeadline : RailCopy.bareHeadline,
-                line: chrome.recoveredNotice ? RailCopy.recoverLine : RailCopy.bareLine,
+                line: chrome.recoveredNotice ? RailCopy.recoverLine : RailCopy.bareProgress(chrome.rail.waitingWorks.count),
                 actionTitle: RailCopy.explore
             ) {
                 chrome.present(.explore)
@@ -73,9 +75,11 @@ struct QuizView: View {
                     .foregroundStyle(RailInk.muted)
                     .fixedSize(horizontal: false, vertical: true)
                 statusChip
+                fieldChoice
                 hookStrip
                 dropStat
                 spreadButton
+                missesButton
                 retractButton
             }
             .padding(.horizontal, RailSpace.outer)
@@ -83,6 +87,93 @@ struct QuizView: View {
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
+    }
+
+    private var readyBoard: some View {
+        VStack(alignment: .leading, spacing: 0) {
+            topChrome
+            VStack(alignment: .leading, spacing: RailSpace.card) {
+                nextTrioRow
+                Text(RailCopy.waitingHeadline(chrome.rail.waitingWorks.count))
+                    .font(RailType.font(.display, size: typeSize))
+                    .foregroundStyle(RailInk.ink)
+                    .lineLimit(typeSize.isAccessibilitySize ? 3 : 2)
+                    .fixedSize(horizontal: false, vertical: true)
+                Text(RailCopy.readyLine)
+                    .font(RailType.font(.body, size: typeSize))
+                    .foregroundStyle(RailInk.muted)
+                    .fixedSize(horizontal: false, vertical: true)
+                fieldChoice
+                missesButton
+                Image(RailArt.emptyHome)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .clipped()
+                    .accessibilityHidden(true)
+                spreadButton
+            }
+            .padding(.horizontal, RailSpace.outer)
+            .padding(.bottom, RailSpace.outer)
+            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .task(id: chrome.rail.waitingWorks.map(\.objectID)) {
+            await faces.loadMany(Rail.sampleWaiting(from: chrome.rail.works).map(\.imageURL))
+        }
+    }
+
+    private var nextTrioRow: some View {
+        HStack(alignment: .top, spacing: RailSpace.card) {
+            ForEach(Rail.sampleWaiting(from: chrome.rail.works)) { work in
+                CanvasTile(
+                    work: work,
+                    caption: .waiting,
+                    isHero: false,
+                    isLifted: false,
+                    cue: SeatCue(primary: "Painting", secondary: "", seat: RailCopy.caption(.waiting), revealed: false),
+                    face: faces.picture(for: work),
+                    fillsSlot: true,
+                    showsCaption: false
+                )
+                .frame(minWidth: 0, maxWidth: .infinity)
+                .frame(height: RailSpace.step(14))
+                .accessibilityElement(children: .ignore)
+                .accessibilityLabel("Waiting painting")
+            }
+        }
+        .frame(maxWidth: .infinity, alignment: .topLeading)
+    }
+
+    private var fieldChoice: some View {
+        VStack(alignment: .leading, spacing: RailSpace.inner) {
+            Text(RailCopy.nextPlates)
+                .font(RailType.font(.caption, size: typeSize))
+                .foregroundStyle(RailInk.muted)
+            HStack(spacing: RailSpace.inner) {
+                fieldButton(.artist, RailCopy.makers)
+                fieldButton(.title, RailCopy.titles)
+            }
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+    }
+
+    private func fieldButton(_ field: CartelField, _ title: String) -> some View {
+        let selected = chrome.rail.preferredField == field
+        return Button(title) {
+            Task { await chrome.setPreferredField(field) }
+        }
+        .buttonStyle(FieldPickStyle(isSelected: selected))
+        .accessibilityLabel(RailCopy.field(field))
+        .accessibilityAddTraits(selected ? .isSelected : [])
+    }
+
+    private func cue(for work: Work) -> SeatCue {
+        SeatCue.make(
+            work: work,
+            field: chrome.rail.cartelField,
+            caption: chrome.rail.caption(for: work.id)
+        )
     }
 
     private var spreadBoard: some View {
@@ -227,29 +318,33 @@ struct QuizView: View {
     private var heroCaptionBlock: some View {
         VStack(alignment: .leading, spacing: RailSpace.inner) {
             if let work = chrome.heroWork {
-                Text(work.title)
+                let face = cue(for: work)
+                Text(face.primary)
                     .font(RailType.font(.headline, size: typeSize))
                     .foregroundStyle(RailInk.ink)
                     .lineLimit(3)
                     .fixedSize(horizontal: false, vertical: true)
-                Text(work.artist)
-                    .font(RailType.font(.caption, size: typeSize))
-                    .foregroundStyle(RailInk.muted)
-                    .lineLimit(2)
-                    .fixedSize(horizontal: false, vertical: true)
-                Text(RailCopy.caption(chrome.rail.caption(for: work.id)))
+                if !face.secondary.isEmpty {
+                    Text(face.secondary)
+                        .font(RailType.font(.caption, size: typeSize))
+                        .foregroundStyle(RailInk.muted)
+                        .lineLimit(2)
+                        .fixedSize(horizontal: false, vertical: true)
+                }
+                Text(face.seat)
                     .font(RailType.font(.caption, size: typeSize))
                     .foregroundStyle(RailInk.muted)
             }
             HStack(spacing: RailSpace.inner) {
                 ForEach(chrome.companionWorks) { work in
-                    Text(RailCopy.caption(chrome.rail.caption(for: work.id)))
+                    let face = cue(for: work)
+                    Text(face.seat)
                         .font(RailType.font(.caption, size: typeSize))
                         .foregroundStyle(RailInk.ink)
                         .padding(.horizontal, RailSpace.card)
                         .padding(.vertical, RailSpace.inner)
                         .background(RailInk.surface, in: Capsule())
-                        .accessibilityLabel("\(work.title), \(RailCopy.caption(chrome.rail.caption(for: work.id)))")
+                        .accessibilityLabel(face.accessLabel)
                 }
             }
         }
@@ -384,11 +479,13 @@ struct QuizView: View {
         fillsSlot: Bool = false,
         showsCaption: Bool = true
     ) -> some View {
+        let faceCue = cue(for: work)
         let tile = CanvasTile(
             work: work,
             caption: caption,
             isHero: isHero,
             isLifted: isLifted,
+            cue: faceCue,
             face: faces.picture(for: work),
             fillsSlot: fillsSlot,
             showsCaption: showsCaption
@@ -403,7 +500,7 @@ struct QuizView: View {
         .task(id: work.objectID) {
             await faces.loadWork(work)
         }
-        .accessibilityLabel("\(work.title), \(work.artist), \(RailCopy.caption(caption))")
+        .accessibilityLabel(faceCue.accessLabel)
         .accessibilityHint(canvasHint(for: work))
     }
 
@@ -431,7 +528,11 @@ struct QuizView: View {
         .disabled(!chrome.primaryHookEnabled)
         .frame(maxWidth: .infinity)
         .accessibilityLabel(RailCopy.hookAction)
-        .accessibilityHint("Hang the painting under the title that names it")
+        .accessibilityHint(
+            chrome.rail.cartelField == .artist
+                ? "Hang the painting under the maker that names it"
+                : "Hang the painting under the title that names it"
+        )
     }
 
     private var nameplateRail: some View {
@@ -545,6 +646,24 @@ struct QuizView: View {
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .clipped()
                 .accessibilityLabel("Hook seated")
+        }
+    }
+
+    @ViewBuilder
+    private var missesButton: some View {
+        if chrome.rail.canSpreadMisses {
+            VStack(alignment: .leading, spacing: RailSpace.inner) {
+                Text(RailCopy.missesLine)
+                    .font(RailType.font(.caption, size: typeSize))
+                    .foregroundStyle(RailInk.muted)
+                    .fixedSize(horizontal: false, vertical: true)
+                Button(RailCopy.spreadMisses) {
+                    Task { await chrome.spreadRail(misses: true) }
+                }
+                .buttonStyle(RetractRailStyle())
+                .disabled(!chrome.spreadEnabled)
+                .accessibilityLabel(RailCopy.spreadMisses)
+            }
         }
     }
 

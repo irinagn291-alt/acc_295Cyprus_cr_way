@@ -60,8 +60,52 @@ struct CatalogRow: Identifiable, Equatable, Sendable, Codable {
     var title: String
     var imageURLString: String?
     var dated: String?
+    var note: String?
 
     var id: String { objectID }
+
+    var studyNote: String? {
+        let trimmed = note?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
+        return trimmed.isEmpty ? nil : trimmed
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case objectID
+        case artist
+        case title
+        case imageURLString
+        case dated
+        case note
+    }
+
+    init(objectID: String, artist: String, title: String, imageURLString: String?, dated: String?, note: String? = nil) {
+        self.objectID = objectID
+        self.artist = artist
+        self.title = title
+        self.imageURLString = imageURLString
+        self.dated = dated
+        self.note = note
+    }
+
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        objectID = try container.decode(String.self, forKey: .objectID)
+        artist = try container.decode(String.self, forKey: .artist)
+        title = try container.decode(String.self, forKey: .title)
+        imageURLString = try container.decodeIfPresent(String.self, forKey: .imageURLString)
+        dated = try container.decodeIfPresent(String.self, forKey: .dated)
+        note = try container.decodeIfPresent(String.self, forKey: .note)
+    }
+
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(objectID, forKey: .objectID)
+        try container.encode(artist, forKey: .artist)
+        try container.encode(title, forKey: .title)
+        try container.encodeIfPresent(imageURLString, forKey: .imageURLString)
+        try container.encodeIfPresent(dated, forKey: .dated)
+        try container.encodeIfPresent(note, forKey: .note)
+    }
 
     var imageURL: URL? {
         CatalogClient.thumbURL(from: imageURLString)

@@ -143,7 +143,15 @@ final class RailChrome {
         handle(job)
     }
 
-    func spreadRail() async {
+    func spreadMisses() async {
+        await spreadRail(practice: true)
+    }
+
+    func spreadRail(misses: Bool = false) async {
+        await spreadRail(practice: misses)
+    }
+
+    private func spreadRail(practice: Bool) async {
         guard !isSpreading else { return }
         isSpreading = true
         let pulse = Task {
@@ -151,11 +159,20 @@ final class RailChrome {
             if !Task.isCancelled { spreadBusy = true }
         }
         do {
-            try await store.spreadRail()
+            if practice {
+                try await store.spreadMisses()
+            } else {
+                try await store.spreadRail()
+            }
             showSuccess = false
             sync()
             if store.lastWriteError == nil {
-                railFault = nil
+                if let chosen = rail.cartelField,
+                   let line = RailCopy.fieldFallback(preferred: rail.preferredField, chosen: chosen) {
+                    railFault = line
+                } else {
+                    railFault = nil
+                }
             }
         } catch {
             railFault = RailCopy.fault(error)
@@ -165,6 +182,19 @@ final class RailChrome {
         spreadBusy = false
         isSpreading = false
         sync()
+    }
+
+    func setPreferredField(_ field: CartelField) async {
+        await store.setPreferredField(field)
+        sync()
+    }
+
+    func writeLabel(objectID: String, text: String) async throws {
+        try await store.writeLabel(objectID, text: text)
+        sync()
+        if store.lastWriteError == nil {
+            railFault = nil
+        }
     }
 
     func liftWork(_ workID: UUID) async {

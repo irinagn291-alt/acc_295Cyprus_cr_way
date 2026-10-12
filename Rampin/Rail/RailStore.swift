@@ -71,9 +71,28 @@ final class RailStore {
         }
     }
 
-    func spreadRail() async throws {
+    func spreadMisses() async throws {
         var next = rail
-        try next.spreadRail()
+        try next.spreadMisses()
+        rail = next
+        await persistNow()
+    }
+
+    func spreadRail(misses: Bool = false) async throws {
+        var next = rail
+        try next.spreadRail(misses: misses)
+        rail = next
+        await persistNow()
+    }
+
+    func writeLabel(
+        _ objectID: String,
+        text: String,
+        now: Date = Date(),
+        calendar: Calendar = .current
+    ) async throws {
+        var next = rail
+        try next.writeLabel(objectID, text: text, now: now, calendar: calendar)
         rail = next
         await persistNow()
     }
@@ -149,6 +168,14 @@ final class RailStore {
         } catch {
             return rail.fallbackRows(shelf: shelf.rows)
         }
+    }
+
+    func setPreferredField(_ field: CartelField) async {
+        guard rail.preferredField != field else { return }
+        var next = rail
+        next.preferredField = field
+        rail = next
+        await persistNow()
     }
 
     func setOnboardingComplete(_ flag: Bool) async {

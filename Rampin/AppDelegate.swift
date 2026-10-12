@@ -21,12 +21,8 @@ final class AppDelegate: NSObject, UIApplicationDelegate {
     }
 
     @objc private func applicationDidBecomeActive() {
-        if #available(iOS 14, *) {
-            ATTrackingManager.requestTrackingAuthorization { @Sendable _ in
-                AppsFlyerLib.shared().start()
-            }
-        } else {
-            AppsFlyerLib.shared().start()
-        }
+        AppsFlyerLib.shared().start()
+        guard ATTrackingManager.trackingAuthorizationStatus == .notDetermined else { return }
+        ATTrackingManager.requestTrackingAuthorization { @Sendable _ in }
     }
 }

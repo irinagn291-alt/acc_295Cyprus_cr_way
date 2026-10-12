@@ -203,6 +203,138 @@ final class RailFoldTests: XCTestCase {
         XCTAssertNotEqual(seeded.fold, .bare)
     }
 
+    func test_readyToSpread_afterThreeWaitingWorks() throws {
+        var rail = makeCrate(waiting: 2)
+        XCTAssertFalse(rail.readyToSpread)
+        XCTAssertEqual(rail.fold, .bare)
+        _ = try rail.fileWork(PmaShelf.bundled.rows[2], now: Date(timeIntervalSince1970: 1_700_300_000))
+        XCTAssertEqual(rail.fold, .bare, "Saving does not spread by itself")
+        XCTAssertTrue(rail.readyToSpread)
+    }
+
+    func test_spreadUsesPreferredField() throws {
+        var rail = makeCrate(waiting: 3)
+        rail.preferredField = .artist
+        try rail.spreadRail()
+        XCTAssertEqual(rail.cartelField, .artist)
+        XCTAssertEqual(Set(rail.planted.map(\.cartel.field)), [.artist])
+    }
+
+    func test_seatCueHidesTheNameplateField() {
+        let work = Work.waiting(from: PmaShelf.bundled.rows[0], daykey: 20261012)
+        let titleRound = SeatCue.make(work: work, field: .title, caption: .waiting)
+        XCTAssertFalse(titleRound.revealed)
+        XCTAssertEqual(titleRound.primary, work.artist)
+        XCTAssertFalse(titleRound.accessLabel.contains(work.title))
+        let makerRound = SeatCue.make(work: work, field: .artist, caption: .lifted)
+        XCTAssertEqual(makerRound.primary, work.title)
+        XCTAssertFalse(makerRound.accessLabel.contains(work.artist))
+        let seated = SeatCue.make(work: work, field: .title, caption: .hooked)
+        XCTAssertTrue(seated.revealed)
+        XCTAssertEqual(seated.primary, work.title)
+        XCTAssertTrue(seated.accessLabel.contains(work.artist))
+    }
+
+    func test_shelfKeepsOpeningEightAndStudyNotes() {
+        let rows = PmaShelf.bundled.rows
+        XCTAssertGreaterThanOrEqual(rows.count, 24)
+        XCTAssertEqual(Array(rows.prefix(8).map(\.objectID)), [
+            "Q773861", "Q698518", "Q7756187", "Q3399414",
+            "Q18749255", "Q20487081", "Q7720394", "Q7714255",
+        ])
+        XCTAssertEqual(Set(rows.map(\.objectID)).count, rows.count)
+        XCTAssertTrue(rows.allSatisfy { $0.studyNote != nil && !($0.dated ?? "").isEmpty })
+    }
+
+    func test_oldSnapshotWithoutPreferredFieldDecodes() throws {
+        let data = try RailDocument.encode(Rail.empty)
+        var object = try XCTUnwrap(JSONSerialization.jsonObject(with: data) as? [String: Any])
+        object.removeValue(forKey: "preferredField")
+        let stripped = try JSONSerialization.data(withJSONObject: object)
+        let rail = try RailDocument.decode(stripped)
+        XCTAssertEqual(rail.preferredField, .title)
+        XCTAssertEqual(rail.fold, .bare)
+        XCTAssertTrue(rail.labels.isEmpty)
+        XCTAssertTrue(rail.runs.isEmpty)
+    }
+
+    func test_spreadMissesPrefersDroppedWorks() throws {
+        var rail = makeCrate(waiting: 6)
+        try rail.spreadRail(preferring: .title)
+        let missed = rail.planted[0]
+        let other = rail.planted[1]
+        try rail.liftWork(missed.workID)
+        _ = try rail.hookRampin(other.id)
+        for peg in rail.planted {
+            if rail.works.first(where: { $0.id == peg.workID })?.seat == .waiting {
+                try rail.liftWork(peg.workID)
+                _ = try rail.hookRampin(peg.id)
+            }
+        }
+        XCTAssertEqual(rail.fold, .settled)
+        XCTAssertEqual(rail.runs.count, 1)
+        XCTAssertEqual(rail.runs[0].drops, 1)
+        XCTAssertEqual(rail.works.first { $0.id == missed.workID }?.seat, .settled)
+        XCTAssertTrue(rail.canSpreadMisses)
+        try rail.spreadMisses()
+        XCTAssertEqual(rail.fold, .spread)
+        XCTAssertEqual(rail.planted.first?.workID, missed.workID)
+        XCTAssertEqual(rail.works.first { $0.id == missed.workID }?.seat, .waiting)
+    }
+
+    func test_wallLabelStaysOnTheSavedWork_andEmptyClearsIt() throws {
+        var rail = makeCrate(waiting: 1)
+        let objectID = rail.works[0].objectID
+        let fold = rail.fold
+        try rail.writeLabel(objectID, text: "  Clinic light  ")
+        XCTAssertEqual(rail.labelText(for: objectID), "Clinic light")
+        XCTAssertEqual(rail.fold, fold)
+        try rail.writeLabel(objectID, text: "   ")
+        XCTAssertNil(rail.labelText(for: objectID))
+        XCTAssertThrowsError(try rail.writeLabel("missing", text: "No")) { error in
+            XCTAssertEqual(error as? RailFault, .unknownWork)
+        }
+    }
+
+    func test_retractSettledRunRestoresTheDropBaseline() throws {
+        var rail = makeCrate(waiting: 3)
+        try rail.spreadRail(preferring: .title)
+        for peg in rail.planted {
+            try rail.liftWork(peg.workID)
+            _ = try rail.hookRampin(peg.id)
+        }
+        XCTAssertEqual(rail.runs.count, 1)
+        try rail.retractNewestMark()
+        XCTAssertEqual(rail.fold, .spread)
+        XCTAssertTrue(rail.runs.isEmpty)
+        XCTAssertEqual(rail.spreadDropBaseline, 0)
+    }
+
+    func test_shelfCutKeepsFreshWorksAndCenturies() {
+        let rows = Array(PmaShelf.bundled.rows.prefix(4))
+        let saved: Set<String> = [rows[0].objectID]
+        let fresh = ShelfQuery.apply(rows: rows, cut: .fresh, order: .shelf, saved: saved)
+        XCTAssertEqual(fresh.map(\.objectID), rows.dropFirst().map(\.objectID))
+        let early = ShelfQuery.apply(rows: PmaShelf.bundled.rows, cut: .before1700, order: .year, saved: [])
+        XCTAssertFalse(early.isEmpty)
+        XCTAssertTrue(early.allSatisfy { (ShelfQuery.year(of: $0.dated) ?? 9_999) < 1_700 })
+        let modern = ShelfQuery.apply(rows: PmaShelf.bundled.rows, cut: .century1900, order: .maker, saved: [])
+        XCTAssertTrue(modern.contains { $0.objectID == "Q698518" })
+    }
+
+    func test_oldSnapshotWithoutLabelsStillDecodes() throws {
+        let data = try RailDocument.encode(Rail.empty)
+        var object = try XCTUnwrap(JSONSerialization.jsonObject(with: data) as? [String: Any])
+        object.removeValue(forKey: "labels")
+        object.removeValue(forKey: "runs")
+        object.removeValue(forKey: "spreadDropBaseline")
+        let stripped = try JSONSerialization.data(withJSONObject: object)
+        let rail = try RailDocument.decode(stripped)
+        XCTAssertTrue(rail.labels.isEmpty)
+        XCTAssertTrue(rail.runs.isEmpty)
+        XCTAssertNil(rail.spreadDropBaseline)
+    }
+
     private func makeCrate(waiting: Int) -> Rail {
         var rail = Rail.empty
         let rows = PmaShelf.bundled.rows

@@ -51,6 +51,23 @@ struct PeelRef: Equatable, Sendable, Codable {
     var markID: UUID
 }
 
+/// Role: Rail. A sentence the handler writes on a saved work. It stays on this device.
+struct WallLabel: Equatable, Sendable, Codable {
+    var objectID: String
+    var text: String
+    var daykey: Int
+}
+
+/// Role: Rail. One settled trio. Drops are the misses counted from the spread that seated it.
+struct RailRun: Equatable, Sendable, Codable, Identifiable {
+    var id: UUID
+    var objectIDs: [String]
+    var field: CartelField
+    var drops: Int
+    var daykey: Int
+    var baseline: Int
+}
+
 /// Role: Rail. In-memory fold over Works. Views call spreadRail, liftWork, hookRampin, dropRampin, and retractNewestMark. Never a second rail enum.
 struct Rail: Equatable, Sendable {
     var schemaVersion: Int
@@ -65,8 +82,13 @@ struct Rail: Equatable, Sendable {
     var peelLog: [PeelRef]
     var cachedRows: [CatalogRow]
     var focusedWorkID: UUID?
+    var preferredField: CartelField = .title
+    var labels: [WallLabel] = []
+    var runs: [RailRun] = []
+    var spreadDropBaseline: Int?
 
     static let currentSchema = 1
+    static let labelLimit = 180
 
     static let empty = Rail(
         schemaVersion: currentSchema,
@@ -116,6 +138,41 @@ struct Rail: Equatable, Sendable {
         fold != .spread
     }
 
+    var readyToSpread: Bool {
+        fold != .spread && waitingWorks.count >= 3
+    }
+
+    var missIDs: Set<UUID> {
+        let waiting = Set(waitingWorks.map(\.id))
+        return Set(dropMarks.map(\.workID)).intersection(waiting)
+    }
+
+    var canSpreadMisses: Bool {
+        guard fold != .spread else { return false }
+        let dropped = works.filter { work in
+            dropMarks.contains { $0.workID == work.id } && (work.seat.isWaiting || work.seat.isSettled)
+        }
+        guard !dropped.isEmpty else { return false }
+        let fillers = waitingWorks.filter { work in
+            !dropMarks.contains { $0.workID == work.id }
+        }
+        return dropped.count + fillers.count >= 3
+    }
+
+    func labelText(for objectID: String) -> String? {
+        labels.first { $0.objectID == objectID }?.text
+    }
+
+    var makerTallies: [(name: String, count: Int)] {
+        let groups = Dictionary(grouping: settledWorks, by: \.artist)
+        return groups
+            .map { (name: $0.key, count: $0.value.count) }
+            .sorted { lhs, rhs in
+                if lhs.count != rhs.count { return lhs.count > rhs.count }
+                return lhs.name.localizedStandardCompare(rhs.name) == .orderedAscending
+            }
+    }
+
     var canLift: Bool {
         fold == .spread && waitingOnRail.contains(where: { $0.seat.isWaiting })
     }
@@ -138,19 +195,20 @@ struct Rail: Equatable, Sendable {
         return .waiting
     }
 
-    mutating func spreadRail(preferring field: CartelField? = nil) throws {
+    mutating func spreadRail(preferring field: CartelField? = nil, misses: Bool = false) throws {
         if fold == .spread {
             throw RailFault.alreadySpread
         }
-        let sample = Self.sampleWaiting(from: works)
+        let sample = Self.sampleWaiting(from: works, misses: misses ? missIDs : [])
         guard sample.count == 3 else {
             fold = .bare
             planted = []
             cartelField = nil
             liftedWorkID = nil
+            spreadDropBaseline = nil
             return
         }
-        let chosen = Self.chooseField(for: sample, preferring: field ?? cartelField?.toggled ?? .artist)
+        let chosen = Self.chooseField(for: sample, preferring: field ?? preferredField)
         planted = sample.map { work in
             Rampin(
                 id: UUID(),
@@ -161,7 +219,45 @@ struct Rail: Equatable, Sendable {
         }
         cartelField = chosen
         liftedWorkID = nil
+        spreadDropBaseline = dropMarks.count
         fold = .spread
+    }
+
+    /// Puts missed works back on the waiting rail, then spreads with those works first.
+    mutating func spreadMisses() throws {
+        var chosen: [UUID] = []
+        for id in dropMarks.reversed().map(\.workID) where !chosen.contains(id) {
+            chosen.append(id)
+            if chosen.count == 3 { break }
+        }
+        for id in chosen {
+            if let index = works.firstIndex(where: { $0.id == id && $0.seat.isSettled }) {
+                works[index].seat = .waiting
+            }
+        }
+        try spreadRail(misses: true)
+    }
+
+    mutating func writeLabel(
+        _ objectID: String,
+        text: String,
+        now: Date = Date(),
+        calendar: Calendar = .current
+    ) throws {
+        let id = objectID.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard works.contains(where: { $0.objectID == id }) else { throw RailFault.unknownWork }
+        let trimmed = String(text.trimmingCharacters(in: .whitespacesAndNewlines).prefix(Self.labelLimit))
+        if trimmed.isEmpty {
+            labels.removeAll { $0.objectID == id }
+            return
+        }
+        let stamp = Daykey.stamp(now, calendar: calendar)
+        if let index = labels.firstIndex(where: { $0.objectID == id }) {
+            labels[index].text = trimmed
+            labels[index].daykey = stamp
+        } else {
+            labels.append(WallLabel(objectID: id, text: trimmed, daykey: stamp))
+        }
     }
 
     mutating func liftWork(_ workID: UUID) throws {
@@ -302,15 +398,20 @@ struct Rail: Equatable, Sendable {
         }
     }
 
-    static func sampleWaiting(from works: [Work]) -> [Work] {
-        works
-            .filter(\.seat.isWaiting)
-            .sorted { lhs, rhs in
+    static func sampleWaiting(from works: [Work], misses: Set<UUID> = []) -> [Work] {
+        func ordered(_ items: [Work]) -> [Work] {
+            items.sorted { lhs, rhs in
                 if lhs.daykey != rhs.daykey { return lhs.daykey < rhs.daykey }
                 return lhs.objectID < rhs.objectID
             }
-            .prefix(3)
-            .map { $0 }
+        }
+        let waiting = works.filter(\.seat.isWaiting)
+        guard !misses.isEmpty else {
+            return Array(ordered(waiting).prefix(3))
+        }
+        let first = ordered(waiting.filter { misses.contains($0.id) })
+        let rest = ordered(waiting.filter { !misses.contains($0.id) })
+        return Array((first + rest).prefix(3))
     }
 
     static func chooseField(for works: [Work], preferring preferred: CartelField) -> CartelField {
@@ -364,7 +465,7 @@ struct Rail: Equatable, Sendable {
             works.contains { $0.id == peg.workID && $0.seat.isHooked }
         }
         if hookedOnRail.count == 3 {
-            settlePlanted()
+            settlePlanted(now: now, calendar: calendar)
         }
     }
 
@@ -396,12 +497,30 @@ struct Rail: Equatable, Sendable {
         focusedWorkID = work.id
     }
 
-    private mutating func settlePlanted() {
+    private mutating func settlePlanted(now: Date, calendar: Calendar) {
+        let baseline = spreadDropBaseline ?? dropMarks.count
+        let drops = max(0, dropMarks.count - baseline)
+        let ids = planted.compactMap { peg in
+            works.first { $0.id == peg.workID }?.objectID
+        }
         for peg in planted {
             if let index = works.firstIndex(where: { $0.id == peg.workID }) {
                 works[index].seat = .settled
             }
         }
+        if ids.count == 3, let field = cartelField {
+            runs.append(
+                RailRun(
+                    id: UUID(),
+                    objectIDs: ids,
+                    field: field,
+                    drops: drops,
+                    daykey: Daykey.stamp(now, calendar: calendar),
+                    baseline: baseline
+                )
+            )
+        }
+        spreadDropBaseline = nil
         fold = .settled
         liftedWorkID = nil
     }
@@ -419,6 +538,12 @@ struct Rail: Equatable, Sendable {
                 }
             }
             fold = .spread
+            let plantedIDs = Set(planted.compactMap { peg in
+                works.first { $0.id == peg.workID }?.objectID
+            })
+            if let last = runs.last, Set(last.objectIDs) == plantedIDs {
+                spreadDropBaseline = runs.removeLast().baseline
+            }
         }
         liftedWorkID = nil
         if let pegIndex = planted.firstIndex(where: { $0.id == mark.rampinID }) {
