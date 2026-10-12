@@ -3,8 +3,14 @@ CR Way is a Philadelphia Museum of Art matching rail for people who want that ma
 • Save Philadelphia Museum of Art paintings from Explore, including a local shelf when search is quiet or fails.
 • Search the museum by Maker or title.
 • Keep a work that is already on the rail without adding it twice.
-• Explore always has a local shelf of eight paintings: The Gross Clinic by Thomas Eakins, Nude Descending a Staircase No. 2 by Marcel Duchamp, The Peaceable Kingdom by Edward Hicks, Prometheus Bound by Peter Paul Rubens, The Annunciation by Henry Ossawa Tanner, Woman with a Pearl Necklace in a Loge by Mary Cassatt, The Burning of the Houses of Lords and Commons by Joseph Mallord William Turner, and The Artist in His Museum by Charles Willson Peale.
+• Explore keeps a local shelf of 26 Philadelphia Museum of Art paintings. Each row shows the year and a short note, including The Gross Clinic by Thomas Eakins, Nude Descending a Staircase No. 2 by Marcel Duchamp, and further works by Monet, Cassatt, Poussin, and others.
+• After three saves, home shows Three works are waiting. Choose Makers or Titles, then Spread. The same Spread sits at the top of Explore.
 • Spread three waiting works onto one rail with three nameplates.
+• A waiting canvas hides the nameplate field. Title plates show the maker and the year. Maker plates show the title and the year. A seated canvas then shows the title, the maker, and the year.
+• Study opens a painting with a longer note. After you save it, write a wall label that stays on this device.
+• Filter the shelf by All, Not saved, Before 1700, 1700s, 1800s, or 1900s. Order it by year or by maker.
+• Spread the misses puts a painting you missed back on the next rail.
+• Saved keeps a run for each settled trio, the makers you have seated, and the labels you wrote.
 • Nameplates for a trio are all makers or all titles (Nameplates show the maker or Nameplates show the title).
 • Lift a waiting canvas, then seat it under the nameplate that names it.
 • Seat this painting seats the waiting or lifted canvas under the nameplate that names it.

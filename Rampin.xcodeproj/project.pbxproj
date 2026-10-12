@@ -11,6 +11,7 @@
 		09242F08609DC8B9759FD9D2 /* APIConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = A021DC6F4CADC4E52538C083 /* APIConfig.swift */; };
 		0B198932F7D405CB3DAA89D5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88E7A0FC3DBE928DBD17601 /* AppDelegate.swift */; };
 		0BDA458C2E7A53EF5DB27C49 /* CatalogClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C13C3E4F17872800C1A9463 /* CatalogClientTests.swift */; };
+		0E30AAAC4F21906EBB09FF1F /* StudySheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DACCE0D5B5A9CCDD5066846 /* StudySheet.swift */; };
 		1188327C77206DF74BCB36B8 /* RailJob.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169DC7EECB312DE2EA91D206 /* RailJob.swift */; };
 		1223352D3274CB3B28AA38DA /* SavedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D609B5DF269555DC36BE174D /* SavedView.swift */; };
 		12631993E44B4F813F7A99A4 /* BarePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E81177E045B9D6AEE43930 /* BarePage.swift */; };
@@ -29,6 +30,7 @@
 		4BA7EFD0872C6B87740D5E3F /* RailIntents.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8EB935F6C9B7FBCD94C0711 /* RailIntents.swift */; };
 		4CC9733AB9F544C53DEDFA12 /* Daykey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CED6F5293D3581A735840CF /* Daykey.swift */; };
 		4F887E79ED7E9A6E48ADA68E /* Rampin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E3408AD9F9E98CFD7656B82 /* Rampin.swift */; };
+		5474B43C2BC7BD7A43D2CA8E /* ShelfQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCE9C6C2410F5C3B714CC60 /* ShelfQuery.swift */; };
 		5A2A05636C5A800CA1E27272 /* RailStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AB9BE4A90F5446715D3D00B /* RailStore.swift */; };
 		63C4D41BE02AFAEBCCFCAD1B /* RailCoverPane.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70D128F43C56BB3A2362A7B /* RailCoverPane.swift */; };
 		67871170650A57B53FA0CB65 /* RailJobTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B3A187B358313F01BA888C /* RailJobTests.swift */; };
@@ -76,12 +78,14 @@
 		20C6A966C909168B99CEA60F /* HeroCanvas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroCanvas.swift; sourceTree = "<group>"; };
 		2633713F934430657127044E /* FamilyInvariantTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyInvariantTests.swift; sourceTree = "<group>"; };
 		2C13C3E4F17872800C1A9463 /* CatalogClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogClientTests.swift; sourceTree = "<group>"; };
+		2FCE9C6C2410F5C3B714CC60 /* ShelfQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShelfQuery.swift; sourceTree = "<group>"; };
 		3B1A535B28D97E38518E23C4 /* TwistSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwistSheet.swift; sourceTree = "<group>"; };
 		6076D15C441C84C9A477B2E7 /* Work.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Work.swift; sourceTree = "<group>"; };
 		60AC921F8A92D4F8B3867D09 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		6730CC8AB9507E8158B419C5 /* Rampin.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = Rampin.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6730CC8AB9507E8158B419C5 /* Rampin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rampin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6955A4425AC408CDB1810863 /* Rail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rail.swift; sourceTree = "<group>"; };
 		6AB9BE4A90F5446715D3D00B /* RailStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RailStore.swift; sourceTree = "<group>"; };
+		6DACCE0D5B5A9CCDD5066846 /* StudySheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudySheet.swift; sourceTree = "<group>"; };
 		71AF7FBF549469579F28E68C /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		763ADD03C6C4D420B246FA8E /* RailFigures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RailFigures.swift; sourceTree = "<group>"; };
 		7803E934252898B39C8597C5 /* CatalogClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogClient.swift; sourceTree = "<group>"; };
@@ -140,6 +144,8 @@
 				ECF87EB2B7A8533AFEDEDB44 /* ExploreView.swift */,
 				CD2F232B85F93BFFA310F960 /* PmaShelf.swift */,
 				D609B5DF269555DC36BE174D /* SavedView.swift */,
+				2FCE9C6C2410F5C3B714CC60 /* ShelfQuery.swift */,
+				6DACCE0D5B5A9CCDD5066846 /* StudySheet.swift */,
 				6076D15C441C84C9A477B2E7 /* Work.swift */,
 			);
 			path = Work;
@@ -328,7 +334,7 @@
 			mainGroup = 482A3B7F35C455131BC3E56B;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
-				1C75B6935C7725E7A9DF9812 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				57CBE0E4396313F30B45F8C7 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				0D027EFB748AA2E137C36752 /* XCRemoteSwiftPackageReference "AppsFlyerFramework-Static" */,
 			);
 			preferredProjectObjectVersion = 77;
@@ -394,6 +400,8 @@
 				36B21A53E91039FB659C5279 /* RampinApp.swift in Sources */,
 				1223352D3274CB3B28AA38DA /* SavedView.swift in Sources */,
 				6D9B542EE878ACFF90573763 /* SettingsView.swift in Sources */,
+				5474B43C2BC7BD7A43D2CA8E /* ShelfQuery.swift in Sources */,
+				0E30AAAC4F21906EBB09FF1F /* StudySheet.swift in Sources */,
 				EE341A6ED9EBB2057AFA7652 /* TwistSheet.swift in Sources */,
 				3E6522893FF3FF585D0444CE /* Work.swift in Sources */,
 			);
@@ -593,14 +601,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 4;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Rampin/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "CR Way";
 				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
 				INFOPLIST_KEY_NSCameraUsageDescription = "This app does not use the camera.";
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_NSUserTrackingUsageDescription = "We use this identifier to personalize your experience and measure app performance.";
 				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationPortrait;
@@ -626,14 +634,15 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 4;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Rampin/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "CR Way";
 				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
 				INFOPLIST_KEY_NSCameraUsageDescription = "This app does not use the camera.";
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_NSUserTrackingUsageDescription = "We use this identifier to personalize your experience and measure app performance.";
 				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationPortrait;
@@ -694,12 +703,12 @@
 				minimumVersion = 6.17.9;
 			};
 		};
-		1C75B6935C7725E7A9DF9812 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+		57CBE0E4396313F30B45F8C7 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/wrandecima-bit/Alamofire";
+			repositoryURL = "https://github.com/srfcsthpvf-prog/Alamofire";
 			requirement = {
 				kind = revision;
-				revision = 7fdd403089757be2ce6991b287c7bef612c8bd04;
+				revision = 3ea8e93ec37a3ae5f255afb529ef20f438dd1903;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -712,7 +721,7 @@
 		};
 		C5F7C94185C6232297076A2C /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 1C75B6935C7725E7A9DF9812 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			package = 57CBE0E4396313F30B45F8C7 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
 		};
 /* End XCSwiftPackageProductDependency section */
