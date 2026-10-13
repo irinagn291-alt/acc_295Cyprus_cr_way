@@ -22,7 +22,42 @@ final class AppDelegate: NSObject, UIApplicationDelegate {
 
     @objc private func applicationDidBecomeActive() {
         AppsFlyerLib.shared().start()
-        guard ATTrackingManager.trackingAuthorizationStatus == .notDetermined else { return }
-        ATTrackingManager.requestTrackingAuthorization { @Sendable _ in }
+        Task { @MainActor in
+            try? await Task.sleep(for: .seconds(1))
+            TrackingPrompt.present()
+        }
+    }
+
+    @MainActor
+    private enum TrackingPrompt {
+        private static var asking = false
+
+        static func present() {
+            guard ATTrackingManager.trackingAuthorizationStatus == .notDetermined else { return }
+            guard UIApplication.shared.applicationState == .active else {
+                guard UIApplication.shared.applicationState != .background else { return }
+                Task { @MainActor in
+                    try? await Task.sleep(for: .milliseconds(500))
+                    present()
+                }
+                return
+            }
+            guard !asking else { return }
+            asking = true
+            ATTrackingManager.requestTrackingAuthorization { @Sendable status in
+                Task { @MainActor in
+                    TrackingPrompt.finish(status)
+                }
+            }
+        }
+
+        private static func finish(_ status: ATTrackingManager.AuthorizationStatus) {
+            asking = false
+            guard status == .notDetermined else { return }
+            Task { @MainActor in
+                try? await Task.sleep(for: .seconds(1))
+                present()
+            }
+        }
     }
 }
